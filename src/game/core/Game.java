@@ -13,7 +13,8 @@ public class Game {
 		
 		//TODO double-buffering
 		
-		frame.setVisible(false);
+		frame.setVisible(true);
+		//set var x to gay
 	}
 	
 }
