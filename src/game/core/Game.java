@@ -13,7 +13,7 @@ public class Game {
 		
 		//TODO double-buffering
 		
-		frame.setVisible(true);
+		frame.setVisible(false);
 	}
 	
 }
