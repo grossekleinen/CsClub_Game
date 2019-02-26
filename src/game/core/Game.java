@@ -12,6 +12,7 @@ public class Game {
 		frame.setSize(800, 800);
 		
 		//TODO double-buffering
+		//Libtard
 		frame.setVisible(true);
 		//set var x to gay
 	}
