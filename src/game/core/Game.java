@@ -12,7 +12,6 @@ public class Game {
 		frame.setSize(800, 800);
 		
 		//TODO double-buffering
-		
 		frame.setVisible(true);
 		//set var x to gay
 	}
