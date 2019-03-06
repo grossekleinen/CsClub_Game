@@ -1,6 +1,12 @@
 package game.core;
 
+import java.awt.Color;
+import java.awt.Image;
+import java.awt.Toolkit;
+
 import javax.swing.JFrame;
+
+import game.character.Character;
 
 public class Game {
 	
@@ -15,6 +21,7 @@ public class Game {
 		frame.setLocation(null);
 		frame.setTitle(title);
 		frame.setVisible(true);
+		frame.setCursor(frame.HAND_CURSOR);
 		
 		//TODO double-buffering
 
