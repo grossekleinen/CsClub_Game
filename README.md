@@ -1,10 +1,2 @@
 # CsClub_Game
-IAN WAS HERE
-ELIJAH WAS HERE
-
-Ian is a wrong boy;
-DEAR GOD PLEASE WHY
-
-I am pearl
-
-ello?
+CS Club's game
