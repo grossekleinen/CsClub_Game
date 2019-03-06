@@ -14,11 +14,13 @@ public class Game {
 	
 	public Game(int windowX, int windowY, String title) {
 		frame = new JFrame("Game!");
+		Image im = Toolkit.getDefaultToolkit().getImage("Sprite.gif");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(800, 800);
-		frame.setResizable(false);
-		frame.setFocusable(true);
-		frame.setLocation(null);
+		frame.setIconImage(im);
+		frame.setResizable(true);
+		frame.setFocusable(false);
+		frame.setLocation(1, 10);
 		frame.setTitle(title);
 		frame.setVisible(true);
 		frame.setCursor(frame.HAND_CURSOR);
@@ -29,7 +31,6 @@ public class Game {
 	}
 	public JFrame getFrame() {
 	    return frame;
-	    
 	}
 	
 }
