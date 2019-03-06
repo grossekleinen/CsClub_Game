@@ -1,36 +1,36 @@
 package game.core;
 
-import java.awt.Color;
-import java.awt.Image;
-import java.awt.Toolkit;
-
-import javax.swing.JFrame;
-
-import game.character.Character;
+import game.event.EventCoordinator;
 
 public class Game {
-	
-	private JFrame frame;
-	
-	public Game(int windowX, int windowY, String title) {
-		frame = new JFrame("Game!");
-		Image im = Toolkit.getDefaultToolkit().getImage("Sprite.gif");
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(800, 800);
-		frame.setIconImage(im);
-		frame.setResizable(true);
-		frame.setFocusable(false);
-		frame.setLocation(1, 10);
-		frame.setTitle(title);
-		frame.setVisible(true);
-		frame.setCursor(frame.HAND_CURSOR);
-		
-		//TODO double-buffering
 
-		//set var x
-	}
-	public JFrame getFrame() {
-	    return frame;
+	private GraphicsEngine ge;
+	private PhysicsEngine pe;
+	private EventCoordinator ec;
+
+	public Game() {
+
+		ge = new GraphicsEngine("THE game", 800, 800, 60);
+		pe = new PhysicsEngine();
+		ec = new EventCoordinator();
+
 	}
 	
+	public void start() {
+		new Thread(pe).run();
+		new Thread(ge).run();
+	}
+	
+	public GraphicsEngine getGraphics() {
+		return ge;
+	}
+	
+	public PhysicsEngine getPhysics() {
+		return pe;
+	}
+	
+	public EventCoordinator getEventCoordinator() {
+		return ec;
+	}
+
 }
