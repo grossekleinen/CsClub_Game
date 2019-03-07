@@ -1,36 +1,62 @@
 package game.core;
 
-import java.awt.Color;
-import java.awt.Image;
-import java.awt.Toolkit;
-
-import javax.swing.JFrame;
-
-import game.character.Character;
+import game.character.IEntity;
+import game.event.meta.EventCoordinator;
+import game.event.meta.KeyboardInterfacer;
+import game.event.meta.MouseInterfacer;
 
 public class Game {
-	
-	private JFrame frame;
-	
-	public Game(int windowX, int windowY, String title) {
-		frame = new JFrame("Game!");
-		Image im = Toolkit.getDefaultToolkit().getImage("Sprite.gif");
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(800, 800);
-		frame.setIconImage(im);
-		frame.setResizable(true);
-		frame.setFocusable(false);
-		frame.setLocation(1, 10);
-		frame.setTitle(title);
-		frame.setVisible(true);
-		frame.setCursor(frame.HAND_CURSOR);
-		
-		//TODO double-buffering
 
-		//set var x
+	private GraphicsEngine ge;
+	private PhysicsEngine pe;
+	private EventCoordinator ec;
+	private KeyboardInterfacer ki;
+	private MouseInterfacer mi;
+
+	private double width = 800, height = 800;
+	private double diagLen = Math.sqrt(width*width + height*height);
+
+	public Game() {
+
+		ge = new GraphicsEngine("THE game", 800, 800, 60, diagLen);
+		pe = new PhysicsEngine(60);
+		ec = new EventCoordinator();
+		
+		ki = new KeyboardInterfacer(ec);
+		mi = new MouseInterfacer(ec, diagLen);
+
 	}
-	public JFrame getFrame() {
-	    return frame;
+
+	public void start() {
+		new Thread(pe).start();
+		new Thread(ge).start();
+
+		ge.getFrame().addKeyListener(ki);
+		ge.getFrame().addMouseListener(ki);
+		ge.getFrame().addMouseWheelListener(mi);
+		ge.getFrame().addMouseMotionListener(mi);
 	}
-	
+
+	public void addEntity(IEntity ent) {
+		ge.addEntity(ent);
+		pe.addEntity(ent);
+	}
+
+	public void removeEntity(IEntity ent) {
+		ge.removeEntity(ent);
+		pe.removeEntity(ent);
+	}
+
+	public GraphicsEngine getGraphics() {
+		return ge;
+	}
+
+	public PhysicsEngine getPhysics() {
+		return pe;
+	}
+
+	public EventCoordinator getEventCoordinator() {
+		return ec;
+	}
+
 }

@@ -2,8 +2,20 @@ package game.character;
 
 import java.awt.image.BufferedImage;
 
-public interface Sprite {
+public class Sprite implements ISprite {
 
-	public BufferedImage getImage();
-
+	private BufferedImage i;
+	
+	public Sprite(BufferedImage i) {
+		this.i=i;
+	}
+	
+	public void setImage(BufferedImage i){
+		this.i=i;
+	}
+	
+	@Override
+	public BufferedImage getImage() {
+		return i;
+	}
 }
