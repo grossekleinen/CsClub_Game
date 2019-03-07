@@ -1,17 +1,17 @@
 package game.event;
 
-import game.character.ICharacter;
+import game.character.IEntity;
 import game.event.meta.IEvent;
 
 public class CollisionEvent implements IEvent{
 
-	private ICharacter[] parties;
+	private IEntity[] parties;
 
-	public CollisionEvent(ICharacter[] parties) {
+	public CollisionEvent(IEntity[] parties) {
 		this.parties = parties;
 	}
 
-	public ICharacter[] getParties() {
+	public IEntity[] getParties() {
 		return parties.clone();
 	}
 

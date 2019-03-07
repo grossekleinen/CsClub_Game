@@ -2,7 +2,7 @@ package game.character;
 
 import java.awt.Image;
 
-public interface ICharacter {
+public interface IEntity {
 
 	public void setPos(double[] pos);
 
@@ -18,7 +18,7 @@ public interface ICharacter {
 
 	public void setSprite(ISprite sprite);
 
-	public void setHitbox(Hitbox hb);
+	public void setIHitbox(IHitbox hb);
 
 	public double[] getPos();
 
@@ -28,8 +28,8 @@ public interface ICharacter {
 
 	public Image getImage();
 
-	public Hitbox getHitbox();
+	public IHitbox getIHitbox();
 	
-	public boolean isTouching(ICharacter other);
+	public boolean isTouching(IEntity other);
 
 }

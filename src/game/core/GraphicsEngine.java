@@ -1,22 +1,22 @@
 package game.core;
 
 import java.awt.Graphics;
-import java.awt.Toolkit;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JFrame;
 
-import game.character.ICharacter;
+import game.character.IEntity;
 
 public class GraphicsEngine implements Runnable {
 
 	private JFrame frame;
-	private List<ICharacter> chars;
+	private List<IEntity> ents;
 	private long tpf;//time per frame
 	private boolean running;
+	private double posWeight;
 
-	public GraphicsEngine(String title, int width, int height, double framerate) {
+	public GraphicsEngine(String title, int width, int height, double framerate, double diagLen) {
 
 		running = false;
 
@@ -29,7 +29,9 @@ public class GraphicsEngine implements Runnable {
 
 		tpf = (long) (1000/framerate);
 
-		chars = new ArrayList<ICharacter>();
+		ents = new ArrayList<IEntity>();
+
+		posWeight = diagLen/100;
 	}
 
 	@Override
@@ -48,15 +50,13 @@ public class GraphicsEngine implements Runnable {
 		frame.setVisible(true);
 		frame.createBufferStrategy(2);//TODO check if manually double buffering is necessary or only this is required
 
-		double posWeight = Math.sqrt(frame.getWidth()*frame.getWidth() + frame.getHeight()*frame.getHeight())/100.0;
-
 		while (running) {
 
 			Graphics g = frame.getGraphics();
 
-			synchronized (chars) {
-				for (ICharacter c : chars) {
-					g.drawImage(c.getImage(), (int) (c.getPos()[0]*posWeight), (int) (c.getPos()[1]*posWeight), null);
+			synchronized (ents) {
+				for (IEntity ent : ents) {
+					g.drawImage(ent.getImage(), (int) (ent.getPos()[0]*posWeight), (int) (ent.getPos()[1]*posWeight), null);
 				}
 			}
 
@@ -73,8 +73,16 @@ public class GraphicsEngine implements Runnable {
 		running = false;
 	}
 
-	public void addCharacter() {
+	public boolean addEntity(IEntity ent) {
+		return ents.add(ent);
+	}
 
+	public boolean removeEntity(IEntity ent) {
+		return ents.remove(ent);
+	}
+
+	public boolean hasEntity(IEntity ent) {
+		return ents.contains(ent);
 	}
 
 	public JFrame getFrame() {

@@ -1,12 +1,11 @@
 package game.character;
 
-import java.awt.Image;
 import java.awt.image.BufferedImage;
 
 public interface ISprite {
 
-	public Image getImage();
+	public void setImage(BufferedImage i);
 	
-	public BufferedImage getBufferedImage();
+	public BufferedImage getImage();
 
 }

@@ -12,7 +12,12 @@ public class EventCoordinator {
 		handlers = new HashMap<Class<? extends IEvent>, List<IEventHandler>>();
 	}
 
+	/**
+	 * fires an event
+	 * @param e event to be fired
+	 */
 	public void fire(IEvent e) {
+		
 		synchronized(handlers) {
 
 			for (Class<? extends IEvent> ev : handlers.keySet()) {
@@ -26,9 +31,12 @@ public class EventCoordinator {
 		}
 	}
 
-	public void add(IEventHandler h) throws SecurityException {
-
-
+	/**
+	 * registers an event handler
+	 * @param h the event handler
+	 * @throws SecurityException
+	 */
+	public void addHandler(IEventHandler h) throws SecurityException {
 
 		ListenTo[] annos;
 		try {
@@ -63,7 +71,12 @@ public class EventCoordinator {
 
 	}
 
-	public void remove(IEventHandler h) throws SecurityException {
+	/**
+	 * removes an event handler
+	 * @param h event handler to be removed
+	 * @throws SecurityException
+	 */
+	public void removeHandler(IEventHandler h) throws SecurityException {
 
 		ListenTo[] annos;
 		try {

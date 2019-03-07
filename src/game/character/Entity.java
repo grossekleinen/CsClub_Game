@@ -4,22 +4,22 @@ import java.awt.Image;
 
 import game.math.Vector;
 
-public class Character implements ICharacter {
+public class Entity implements IEntity {
 
 	private double[] pos;
 	private double[] vel;
 	private ISprite sprite;
-	private Hitbox hitbox;
+	private IHitbox hb;
 	
-	public Character(double[] pos, double[] vel, ISprite sprite, Hitbox hitbox) {
+	public Entity(double[] pos, double[] vel, ISprite sprite, IHitbox hb) {
 		this.pos = pos;
 		this.vel = vel;
 		this.sprite = sprite;
-		this.hitbox = hitbox;
+		this.hb = hb;
 	}
 	
-	public Character(double[] pos, ISprite sprite, Hitbox hitbox) {
-		this(pos, new double[2], sprite, hitbox);
+	public Entity(double[] pos, ISprite sprite, IHitbox hb) {
+		this(pos, new double[2], sprite, hb);
 	}
 
 	@Override
@@ -60,8 +60,8 @@ public class Character implements ICharacter {
 	}
 
 	@Override
-	public void setHitbox(Hitbox hb) {
-		hitbox = hb;
+	public void setIHitbox(IHitbox hb) {
+		this.hb = hb;
 	}
 
 	@Override
@@ -85,13 +85,13 @@ public class Character implements ICharacter {
 	}
 
 	@Override
-	public Hitbox getHitbox() {
-		return hitbox;
+	public IHitbox getIHitbox() {
+		return hb;
 	}
 
 	@Override
-	public boolean isTouching(ICharacter other) {
-		return hitbox.isTouching(pos, other.getHitbox(), other.getPos());
+	public boolean isTouching(IEntity other) {
+		return hb.isTouching(pos, other.getIHitbox(), other.getPos());
 	}
 	
 }
