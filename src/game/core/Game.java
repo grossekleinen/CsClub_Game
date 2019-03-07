@@ -1,6 +1,6 @@
 package game.core;
 
-import game.event.EventCoordinator;
+import game.event.meta.EventCoordinator;
 
 public class Game {
 

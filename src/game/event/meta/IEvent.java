@@ -1,4 +1,4 @@
-package game.event;
+package game.event.meta;
 
 public interface IEvent {
 	

@@ -1,4 +1,4 @@
-package game.event;
+package game.event.meta;
 
 import java.util.ArrayList;
 import java.util.HashMap;
