@@ -1,4 +1,4 @@
-package game.event.meta;
+package engine.event.meta;
 
 public interface IEventHandler {
 

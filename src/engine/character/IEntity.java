@@ -1,6 +1,7 @@
-package game.character;
+package engine.character;
 
 import java.awt.Image;
+import java.util.List;
 
 public interface IEntity {
 
@@ -29,7 +30,17 @@ public interface IEntity {
 	public Image getImage();
 
 	public IHitbox getIHitbox();
-	
+
 	public boolean isTouching(IEntity other);
+
+	public void addTouching(IEntity ent);
+
+	public void removeTouching(IEntity ent);
+
+	public List<IEntity> getTouching();
+
+	public void setTouching(List<IEntity> touching);
+
+	public void clearTouching();
 
 }

@@ -1,4 +1,4 @@
-package game.character;
+package engine.character;
 
 public interface IHitbox {
 

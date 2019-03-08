@@ -1,9 +1,9 @@
-package game.core;
+package engine.core;
 
-import game.character.IEntity;
-import game.event.meta.EventCoordinator;
-import game.event.meta.KeyboardInterfacer;
-import game.event.meta.MouseInterfacer;
+import engine.character.IEntity;
+import engine.event.meta.EventCoordinator;
+import engine.event.meta.KeyboardInterfacer;
+import engine.event.meta.MouseInterfacer;
 
 public class Game {
 
@@ -18,12 +18,12 @@ public class Game {
 
 	public Game() {
 
-		ge = new GraphicsEngine("THE game", 800, 800, 60, diagLen);
-		pe = new PhysicsEngine(60);
 		ec = new EventCoordinator();
-		
+		ge = new GraphicsEngine("THE game", 800, 800, 60, diagLen/1000);
+		pe = new PhysicsEngine(ec, 60);
+
 		ki = new KeyboardInterfacer(ec);
-		mi = new MouseInterfacer(ec, diagLen);
+		mi = new MouseInterfacer(ec, 1000/diagLen);
 
 	}
 

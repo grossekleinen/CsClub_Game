@@ -1,4 +1,4 @@
-package game.event.meta;
+package engine.event.meta;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
@@ -10,9 +10,14 @@ public class MouseInterfacer implements MouseMotionListener, MouseWheelListener 
 	private EventCoordinator ec;
 	private double weight;
 	
-	public MouseInterfacer(EventCoordinator ec, double diagLen) {
+	/**
+	 * 
+	 * @param ec
+	 * @param pxToUn ratio of pixels to in-game units
+	 */
+	public MouseInterfacer(EventCoordinator ec, double visualRatio) {
 		this.ec = ec;
-		weight = 100/diagLen;
+		weight = visualRatio;
 	}
 
 	@Override

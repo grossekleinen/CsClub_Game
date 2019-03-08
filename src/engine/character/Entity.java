@@ -1,8 +1,10 @@
-package game.character;
+package engine.character;
 
 import java.awt.Image;
+import java.util.ArrayList;
+import java.util.List;
 
-import game.math.Vector;
+import engine.math.Vector;
 
 public class Entity implements IEntity {
 
@@ -10,14 +12,16 @@ public class Entity implements IEntity {
 	private double[] vel;
 	private ISprite sprite;
 	private IHitbox hb;
-	
+	private List<IEntity> touching;
+
 	public Entity(double[] pos, double[] vel, ISprite sprite, IHitbox hb) {
 		this.pos = pos;
 		this.vel = vel;
 		this.sprite = sprite;
 		this.hb = hb;
+		this.touching = new ArrayList<IEntity>();
 	}
-	
+
 	public Entity(double[] pos, ISprite sprite, IHitbox hb) {
 		this(pos, new double[2], sprite, hb);
 	}
@@ -81,7 +85,7 @@ public class Entity implements IEntity {
 
 	@Override
 	public Image getImage() {
-		return sprite.getImage();
+		return sprite.getInstance();
 	}
 
 	@Override
@@ -91,7 +95,32 @@ public class Entity implements IEntity {
 
 	@Override
 	public boolean isTouching(IEntity other) {
-		return hb.isTouching(pos, other.getIHitbox(), other.getPos());
+		return touching.contains(other);
 	}
-	
+
+	@Override
+	public void addTouching(IEntity ent) {
+		touching.add(ent);
+	}
+
+	@Override
+	public void removeTouching(IEntity ent) {
+		touching.remove(ent);
+	}
+
+	@Override
+	public List<IEntity> getTouching(){
+		return touching;
+	}
+
+	@Override
+	public void setTouching(List<IEntity> touching) {
+		this.touching = touching;
+	}
+
+	@Override
+	public void clearTouching() {
+		touching.clear();
+	}
+
 }
