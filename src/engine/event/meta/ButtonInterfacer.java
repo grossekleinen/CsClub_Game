@@ -114,16 +114,22 @@ public class ButtonInterfacer implements KeyListener, MouseListener {
 	public void keyPressed(KeyEvent e) {
 		Input i = converter.get(e.getKeyCode());
 		i = i != null? i : Input.INVALID;
-		ec.fire(new ButtonInputEvent(i, true));
-		isPressed.put(i, true);
+		Boolean b = isPressed.get(i);
+		if (b == null || !b) {
+			ec.fire(new ButtonInputEvent(i, true));
+			isPressed.put(i, true);
+		}
 	}
 
 	@Override
 	public void keyReleased(KeyEvent e) {
 		Input i = converter.get(e.getKeyCode());
 		i = i != null? i : Input.INVALID;
-		ec.fire(new ButtonInputEvent(i, false));
-		isPressed.put(i, false);
+		Boolean b = isPressed.get(i);
+		if (b == null || b) {
+			ec.fire(new ButtonInputEvent(i, false));
+			isPressed.put(i, false);
+		}
 	}
 
 	@Override
