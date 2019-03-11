@@ -30,12 +30,9 @@ public class GraphicsEngine implements Runnable {
 
 		running = false;
 
-		frame = new JFrame("Game!");
+		frame = new JFrame(title);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(width, height);
-		frame.setResizable(true);
-		frame.setFocusable(false);
-		frame.setTitle(title);
 
 		tpf = (long) (1000/framerate);
 
@@ -65,10 +62,10 @@ public class GraphicsEngine implements Runnable {
 			Graphics g = im.getGraphics();
 			g.clearRect(0, 0, frame.getWidth(), frame.getHeight());
 			g.setColor(Color.WHITE);
-			
+
 			synchronized (ents) {
 				for (IEntity ent : ents) {
-					//g.fillRect((int)(ent.getPos()[0]*posWeight), (int)(ent.getPos()[1]*posWeight), (int)(ent.getIHitbox().getDimensions()[0]*posWeight), (int)(ent.getIHitbox().getDimensions()[1]*posWeight));
+					g.fillRect((int)(ent.getPos()[0]*posWeight), (int)(ent.getPos()[1]*posWeight), (int)(ent.getIHitbox().getDimensions()[0]*posWeight), (int)(ent.getIHitbox().getDimensions()[1]*posWeight));
 					g.drawImage(ent.getImage(), (int) (ent.getPos()[0]*posWeight), (int) (ent.getPos()[1]*posWeight), null);
 				}
 			}
