@@ -91,15 +91,15 @@ public interface IEntity {
 	public boolean isTouching(IEntity other);
 
 	/**
+	 * this function should only be used by in-engine activities!
 	 * adds an entity which this entity is touching
-	 * ! this function should only be used by in-engine activities !
 	 * @param ent entity to be added to those which this entity is touching
 	 */
 	public void addTouching(IEntity ent);
 
 	/**
+	 * this function should only be used by in-engine activities!
 	 * removes an entity from those which this entity is touching
-	 * ! this function should only be used by in-engine activities !
 	 * @param ent entity to be removed from those which this entity is touching
 	 */
 	public void removeTouching(IEntity ent);
@@ -111,15 +111,15 @@ public interface IEntity {
 	public List<IEntity> getTouching();
 
 	/**
+	 * this function should only be used by in-engine activities!
 	 * sets the entities this entity is touching
-	 * ! this function should only be used by in-engine activities !
 	 * @param touching new list of entities this entity is touching
 	 */
 	public void setTouching(List<IEntity> touching);
 
 	/**
+	 * this function should only be used by in-engine activities!
 	 * clears the list of entities this entity is touching
-	 * ! this function should only be used by in-engine activities !
 	 */
 	public void clearTouching();
 
