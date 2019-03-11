@@ -1,4 +1,4 @@
-package engine.character;
+package engine.entity;
 
 import java.util.List;
 

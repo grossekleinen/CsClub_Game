@@ -1,6 +1,6 @@
 package engine.event;
 
-import engine.character.IEntity;
+import engine.entity.IEntity;
 import engine.event.meta.IGameEvent;
 
 public class MovementEvent implements IGameEvent{

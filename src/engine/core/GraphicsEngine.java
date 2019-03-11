@@ -8,7 +8,7 @@ import java.util.List;
 
 import javax.swing.JFrame;
 
-import engine.character.IEntity;
+import engine.entity.IEntity;
 
 public class GraphicsEngine implements Runnable {
 

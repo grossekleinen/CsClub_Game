@@ -1,7 +1,6 @@
 package engine.event;
 
-import engine.character.IEntity;
-import engine.event.meta.IEvent;
+import engine.entity.IEntity;
 import engine.event.meta.IGameEvent;
 
 public class CollisionEvent implements IGameEvent{

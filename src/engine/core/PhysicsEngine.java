@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import engine.character.IEntity;
+import engine.entity.IEntity;
 import engine.event.CollisionEvent;
 import engine.event.GameTickEvent;
 import engine.event.MovementEvent;

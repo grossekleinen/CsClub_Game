@@ -1,4 +1,4 @@
-package engine.character;
+package engine.entity;
 
 public interface IHitbox {
 

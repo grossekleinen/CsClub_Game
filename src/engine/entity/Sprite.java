@@ -1,4 +1,4 @@
-package engine.character;
+package engine.entity;
 
 import java.awt.Graphics2D;
 import java.awt.Image;

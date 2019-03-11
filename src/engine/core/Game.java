@@ -1,7 +1,7 @@
 package engine.core;
 
-import engine.character.IEntity;
 import engine.event.meta.EventCoordinator;
+import engine.entity.IEntity;
 import engine.event.meta.ButtonInterfacer;
 import engine.event.meta.MouseInterfacer;
 
