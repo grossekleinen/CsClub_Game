@@ -1,4 +1,4 @@
-package test.jack;
+package game.test.jack;
 
 import java.io.File;
 import java.io.IOException;
