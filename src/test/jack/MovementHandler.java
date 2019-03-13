@@ -1,23 +1,20 @@
-package game.jackTest;
-
-import java.io.IOException;
+package test.jack;
 
 import engine.entity.IEntity;
 import engine.event.*;
 import engine.event.ButtonInputEvent.Input;
 import engine.event.meta.*;
+import engine.math.Vector;
 
 public class MovementHandler implements IEventHandler {
 
 	private IEntity ent;
-	private int grap = 0;
-	private double newX;
-	private double newY;
-	private double mouseX;
-	private double mouseY;
+	private boolean grap = false;
+	private double[] newPos;
 
 	public MovementHandler(IEntity e) {
 		ent = e;
+		newPos = new double[2];
 	}
 
 	@ListenTo(events={ButtonInputEvent.class,GameTickEvent.class})
@@ -25,7 +22,7 @@ public class MovementHandler implements IEventHandler {
 	public void handle(IEvent e) {
 		if (e instanceof ButtonInputEvent) {
 			ButtonInputEvent button = (ButtonInputEvent) e;
-			
+
 			if (button.getInput() == Input.K_RIGHT) {
 				if (button.isPressEvent()) {
 					ent.addVel(new double[] {100,0});
@@ -49,18 +46,15 @@ public class MovementHandler implements IEventHandler {
 			}
 			if (button.getInput() == Input.K_SPACE) {
 				if (button.isPressEvent()) {
-					grap = 0;
+					grap = false;
 					ent.setVel(new double[] {0,0});
 				}
 			}
 			if (button.getInput() == Input.M_1) {
-				if (button.isPressEvent()) {
-					mouseX = MouseInterfacer.getMouseLocation()[0];
-					mouseY = MouseInterfacer.getMouseLocation()[1];
-					newY = MouseInterfacer.getMouseLocation()[1] - ent.getPos()[1];
-					newX = MouseInterfacer.getMouseLocation()[0] - ent.getPos()[0];
-					ent.setVel(new double[] {newX,newY});
-					grap = 1;
+				if (button.isPressEvent()) {;
+					Vector.subtract(Main.getInstance().getMouseLocation(), ent.getPos(), newPos);
+					ent.setVel(newPos);
+					grap = true;
 				}
 			}
 		}
@@ -73,15 +67,12 @@ public class MovementHandler implements IEventHandler {
 				vel = (0 - vel);
 				ent.addVel(new double[] {0,vel});
 			}
-			if (grap == 1) {
-				if (ent.getPos()[0] == mouseX) {
-					if (ent.getPos()[1] == mouseY) {
-						System.out.println("grappled");
-					}
+			if (grap) {
+				if (Vector.equals(ent.getPos(), Main.getInstance().getMouseLocation())) {
+					System.out.println("grappled");
 				}
-				newY = mouseY - ent.getPos()[1];
-				newX = mouseX - ent.getPos()[0];
-				ent.setVel(new double[] {newX,newY});
+				Vector.subtract(Main.getInstance().getMouseLocation(), ent.getPos(), newPos);
+				ent.setVel(newPos);
 			}
 		}
 	}

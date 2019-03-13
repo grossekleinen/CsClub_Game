@@ -29,7 +29,7 @@ public class MouseInterfacer implements MouseMotionListener, MouseWheelListener 
 	 * @return the current location of the mouse cursor in in-game coordinates
 	 */
 	public double[] getMouseLocation() {
-		return loc;
+		return loc.clone();
 	}
 
 	@Override

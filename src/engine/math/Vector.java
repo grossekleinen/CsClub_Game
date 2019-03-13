@@ -75,8 +75,8 @@ public class Vector {
 	}
 
 	/**
-	 * gets magnitude of a vector
-	 * @param a vector to get magnitude of
+	 * gets magnitude of a 2D vector
+	 * @param a the 2D vector to get magnitude of
 	 * @return magnitude of a
 	 */
 	public static double magnitude(double[] a) {
@@ -84,12 +84,27 @@ public class Vector {
 	}
 
 	/**
-	 * gets the squared magnitude of a vector
-	 * @param a vector to get squared magnitude of
+	 * gets the squared magnitude of a 2D vector
+	 * @param a the 2D vector to get squared magnitude of
 	 * @return squared magnitude of a
 	 */
 	public static double magnitude2(double[] a) {
 		return a[0]*a[0] + a[1]*a[1];
+	}
+
+	/**
+	 * checks if two vectors are equal
+	 * @param a first vector
+	 * @param b second vector
+	 * @return whether the first and second vector are the same
+	 */
+	public static boolean equals(double[] a, double[] b) {
+		for (int i = 0; i < Math.min(a.length, b.length); i++) {
+			if (a[i] != b[i]) {
+				return false;
+			}
+		}
+		return true;
 	}
 
 }

@@ -1,4 +1,4 @@
-package game.jackTest;
+package test.jack;
 
 import engine.entity.*;
 

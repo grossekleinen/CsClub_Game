@@ -1,4 +1,4 @@
-package game.jackTest;
+package test.jack;
 
 import java.io.File;
 import java.io.IOException;
@@ -11,8 +11,11 @@ import engine.core.Game;
 import engine.entity.*;
 
 public class Main {
+	
+	private static Game g;
+	
 	public static void main(String[] args) throws IOException {
-		Game g = new Game();
+		g = new Game();
 		g.start();
 		ISprite sprite = new Sprite(ImageIO.read(new File("src/game/jackTest/sprite.png")), 40, 40);
 		List<double[]> boxes = new ArrayList<double[]>();
@@ -21,5 +24,9 @@ public class Main {
 		IEntity ent = new TestEntity(new double[] {0,10}, sprite, hb);
 		g.addEntity(ent);
 		g.getEventCoordinator().addHandler(new MovementHandler(ent));
+	}
+	
+	public static Game getInstance() {
+		return g;
 	}
 }
