@@ -15,12 +15,12 @@ public class HookTest {
 	
 	public static void summonHook() throws IOException {
 		g = Main.getInstance();
-		ISprite sprite = new Sprite(ImageIO.read(new File("src/game/test/jack/aimer.png")), 10, 10);
+		ISprite sprite = new Sprite(ImageIO.read(new File("src/game/test/jack/aimer.png")), 20, 20);
 		List<double[]> boxes = new ArrayList<double[]>();
 		boxes.add(new double[] {0, 0, sprite.getWidth(), sprite.getHeight()});
 		IHitbox hb = new Hitbox(boxes);
 		IEntity ent = new TestEntity(new double[] {50,10}, sprite, hb);
 		g.addEntity(ent);
-		g.getEventCoordinator().addHandler(new MovementHandler(ent));
+		g.getEventCoordinator().addHandler(new HookHandler(ent));
 	}
 }

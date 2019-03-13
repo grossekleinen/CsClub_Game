@@ -68,6 +68,8 @@ public class MovementHandler implements IEventHandler {
 				double vel = ent.getVel()[1];
 				vel = (0 - vel);
 				ent.addVel(new double[] {0,vel});
+				double posX = ent.getPos()[0];
+				ent.setPos(new double[] {posX, 500});
 			}
 			if (grap) {
 				if (Vector.equals(ent.getPos(), Main.getInstance().getMouseLocation())) {
