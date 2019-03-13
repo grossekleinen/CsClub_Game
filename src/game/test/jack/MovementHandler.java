@@ -11,6 +11,7 @@ public class MovementHandler implements IEventHandler {
 	private IEntity ent;
 	private boolean grap = false;
 	private double[] newPos;
+	private double[] mousePos;
 
 	public MovementHandler(IEntity e) {
 		ent = e;
@@ -51,8 +52,9 @@ public class MovementHandler implements IEventHandler {
 				}
 			}
 			if (button.getInput() == Input.M_1) {
-				if (button.isPressEvent()) {;
-					Vector.subtract(Main.getInstance().getMouseLocation(), ent.getPos(), newPos);
+				if (button.isPressEvent()) {
+					mousePos = Main.getInstance().getMouseLocation();
+					Vector.subtract(mousePos, ent.getPos(), newPos);
 					ent.setVel(newPos);
 					grap = true;
 				}
@@ -71,7 +73,7 @@ public class MovementHandler implements IEventHandler {
 				if (Vector.equals(ent.getPos(), Main.getInstance().getMouseLocation())) {
 					System.out.println("grappled");
 				}
-				Vector.subtract(Main.getInstance().getMouseLocation(), ent.getPos(), newPos);
+				Vector.subtract(mousePos, ent.getPos(), newPos);
 				ent.setVel(newPos);
 			}
 		}
