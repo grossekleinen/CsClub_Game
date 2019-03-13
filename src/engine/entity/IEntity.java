@@ -12,16 +12,16 @@ public interface IEntity {
 	public void setPos(double[] pos);
 
 	/**
-	 * adds a 2D vector to the position of this entity
-	 * @param change position vector to be added to the current position
-	 */
-	public void addPos(double[] change);
-
-	/**
 	 * subtracts a 2D vector from the position of this entity
 	 * @param change position vector to be subtracted from the current position
 	 */
 	public void subPos(double[] change);
+
+	/**
+	 * adds a 2D vector to the position of this entity
+	 * @param change position vector to be added to the current position
+	 */
+	public void addPos(double[] change);
 
 	/**
 	 * sets the velocity of this entity
@@ -40,6 +40,24 @@ public interface IEntity {
 	 * @param pos position vector to be subtracted from the current position
 	 */
 	public void subVel(double[] change);
+
+	/**
+	 * adds a 2D vector to the acceleration of this entity
+	 * @param change acceleration vector to be added to the current acceleration
+	 */
+	public void addAcc(double[] change);
+
+	/**
+	 * sets the acceleration of this entity
+	 * @param acc new acceleration of this entity
+	 */
+	public void setAcc(double[] acc);
+
+	/**
+	 * 
+	 * @param change
+	 */
+	public void subAcc(double[] change);
 
 	/**
 	 * sets the sprite of this entity
@@ -64,6 +82,12 @@ public interface IEntity {
 	 * @return the current velocity of this entity
 	 */
 	public double[] getVel();
+
+	/**
+	 * gets the acceleration of this entity
+	 * @return the current acceleration of this entity
+	 */
+	public double[] getAcc();
 
 	/**
 	 * gets the sprite of this entity

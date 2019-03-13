@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import engine.entity.IEntity;
+import engine.event.AccelerationEvent;
 import engine.event.CollisionEvent;
 import engine.event.GameTickEvent;
 import engine.event.MovementEvent;
@@ -47,8 +48,16 @@ public class PhysicsEngine implements Runnable {
 		long ticknum = 0;
 
 		while (running) {
-
+			
 			for (IEntity ent : ents) {
+				
+				if (ent.getAcc()[0] != 0 || ent.getAcc()[1] != 0) {
+					double[] oldvel = ent.getVel();
+					ent.addVel(Vector.scale(ent.getAcc(), tptd));
+					double[] newvel = ent.getPos();
+					ec.fire(new AccelerationEvent(ent, oldvel, newvel, ticknum));
+				}
+				
 				if (ent.getVel()[0] != 0 || ent.getVel()[1] != 0) {
 					double[] oldpos = ent.getPos();
 					ent.addPos(Vector.scale(ent.getVel(), tptd));

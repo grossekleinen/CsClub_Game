@@ -8,18 +8,25 @@ import engine.math.Vector;
 
 public class Entity implements IEntity {
 
-	private double[] pos;
-	private double[] vel;
+	private double[] pos, vel, acc;
 	private ISprite sprite;
 	private IHitbox hb;
 	private List<IEntity> touching;
 
-	public Entity(double[] pos, double[] vel, ISprite sprite, IHitbox hb) {
+	public Entity(double[] pos, double[] vel, double[] acc, ISprite sprite, IHitbox hb) {
+		if (pos == null || vel == null || acc == null || sprite == null || hb == null) {
+			throw new NullPointerException("One or more arguments given is null");
+		}
 		this.pos = pos;
 		this.vel = vel;
+		this.acc = acc;
 		this.sprite = sprite;
 		this.hb = hb;
 		this.touching = new ArrayList<IEntity>();
+	}
+
+	public Entity(double[] pos, double[] vel, ISprite sprite, IHitbox hb) {
+		this(pos, vel, new double[2], sprite, hb);
 	}
 
 	public Entity(double[] pos, ISprite sprite, IHitbox hb) {
@@ -59,6 +66,21 @@ public class Entity implements IEntity {
 	}
 
 	@Override
+	public void setAcc(double[] acc) {
+
+	}
+
+	@Override
+	public void addAcc(double[] change) {
+
+	}
+
+	@Override
+	public void subAcc(double[] change) {
+
+	}
+
+	@Override
 	public void setSprite(ISprite sprite) {
 		this.sprite = sprite;
 	}
@@ -76,6 +98,11 @@ public class Entity implements IEntity {
 	@Override
 	public double[] getVel() {
 		return vel;
+	}
+
+	@Override
+	public double[] getAcc() {
+		return acc;
 	}
 
 	@Override
