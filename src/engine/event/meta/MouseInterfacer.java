@@ -12,7 +12,7 @@ public class MouseInterfacer implements MouseMotionListener, MouseWheelListener 
 
 	private EventCoordinator ec;
 	private double weight;
-	private double[] loc;
+	private static double[] loc;
 	
 	/**
 	 * constructs a MouseInterfacer
@@ -28,7 +28,7 @@ public class MouseInterfacer implements MouseMotionListener, MouseWheelListener 
 	 * get the current location of the mouse
 	 * @return the current location of the mouse cursor in in-game coordinates
 	 */
-	public double[] getMouseLocation() {
+	public static double[] getMouseLocation() {
 		return loc;
 	}
 
