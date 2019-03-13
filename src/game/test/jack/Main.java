@@ -17,7 +17,7 @@ public class Main {
 	public static void main(String[] args) throws IOException {
 		g = new Game();
 		g.start();
-		ISprite sprite = new Sprite(ImageIO.read(new File("src/game/jackTest/sprite.png")), 40, 40);
+		ISprite sprite = new Sprite(ImageIO.read(new File("src/game/test/jack/sprite.png")), 40, 40);
 		List<double[]> boxes = new ArrayList<double[]>();
 		boxes.add(new double[] {0, 0, sprite.getWidth(), sprite.getHeight()});
 		IHitbox hb = new Hitbox(boxes);

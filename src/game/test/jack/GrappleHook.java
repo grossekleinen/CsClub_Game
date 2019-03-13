@@ -18,7 +18,7 @@ public class GrappleHook {
 	public static void pos() throws IOException {
 		Game g = new Game();
 		double[] pos = g.getMouseLocation();
-		ISprite sprite = new Sprite(ImageIO.read(new File("src/game/jackTest/hook.png")), 10, 10);
+		ISprite sprite = new Sprite(ImageIO.read(new File("src/game/test/jack/hook.png")), 10, 10);
 		List<double[]> boxes = new ArrayList<double[]>();
 		boxes.add(new double[] {0, 0, sprite.getWidth(), sprite.getHeight()});
 		IHitbox hb = new Hitbox(boxes);
