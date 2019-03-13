@@ -10,24 +10,17 @@ import javax.imageio.ImageIO;
 import engine.core.Game;
 import engine.entity.*;
 
-public class Main {
-	
+public class HookTest {
 	private static Game g;
 	
-	public static void main(String[] args) throws IOException {
-		g = new Game();
-		g.start();
-		ISprite sprite = new Sprite(ImageIO.read(new File("src/game/test/jack/sprite.png")), 40, 40);
+	public static void summonHook() throws IOException {
+		g = Main.getInstance();
+		ISprite sprite = new Sprite(ImageIO.read(new File("src/game/test/jack/aimer.png")), 10, 10);
 		List<double[]> boxes = new ArrayList<double[]>();
 		boxes.add(new double[] {0, 0, sprite.getWidth(), sprite.getHeight()});
 		IHitbox hb = new Hitbox(boxes);
-		IEntity ent = new TestEntity(new double[] {0,10}, sprite, hb);
+		IEntity ent = new TestEntity(new double[] {50,10}, sprite, hb);
 		g.addEntity(ent);
 		g.getEventCoordinator().addHandler(new MovementHandler(ent));
-		HookTest.summonHook();
-	}
-	
-	public static Game getInstance() {
-		return g;
 	}
 }
