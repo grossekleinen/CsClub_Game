@@ -1,4 +1,4 @@
-package game.test.jack;
+package game.jack;
 
 import java.io.File;
 import java.io.IOException;
@@ -15,7 +15,7 @@ public class HookTest {
 	
 	public static void summonHook() throws IOException {
 		g = Main.getInstance();
-		ISprite sprite = new Sprite(ImageIO.read(new File("src/game/test/jack/aimer.png")), 20, 20);
+		ISprite sprite = new Sprite(ImageIO.read(new File("src/game/jack/aimer.png")), 20, 20);
 		List<double[]> boxes = new ArrayList<double[]>();
 		boxes.add(new double[] {0, 0, sprite.getWidth(), sprite.getHeight()});
 		IHitbox hb = new Hitbox(boxes);
